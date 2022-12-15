@@ -11,23 +11,32 @@ function ExpenseForm() {
     });
 
     function titleChangeHandler(event) {
-        setUserInput({
-            ...userInput,
-            enteredTitle: event.target.value
+        // setUserInput({
+        //     ...userInput,
+        //     enteredTitle: event.target.value
+        // });
+        setUserInput((prevState) => {
+            return { ...prevState, enteredTitle: event.target.value }
         });
     };
 
     function amountChangeHandler(event) {
-        setUserInput({
-            ...userInput,
-            enteredAmount: event.target.value
+        // setUserInput({
+        //     ...userInput,
+        //     enteredAmount: event.target.value
+        // });
+        setUserInput((prevState) => {
+            return { ...prevState, enteredAmount: event.target.value }
         });
     };
 
     function dateChangeHandler(event) {
-        setUserInput({
-            ...userInput,
-            enteredDate: event.target.value
+        // setUserInput({
+        //     ...userInput,
+        //     enteredDate: event.target.value
+        // });
+        setUserInput((prevState) => {
+            return { ...prevState, enteredDate: event.target.value }
         });
     };
 
