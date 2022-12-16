@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import Card from "../UI/Card";
@@ -5,14 +7,16 @@ import ExpensesFilter from "./ExpensesFilter";
 
 function Expenses(props) {
 
-    function readFilterValue(value) {
+    const [filteredYear, setFilteredYear] = useState('2020');
+
+    function filterChangeHandler(selectedYear) {
         
-        console.log(value);
+        setFilteredYear(selectedYear);
     };
 
     return (
         <Card className="expenses">
-            <ExpensesFilter onDropDownChange={readFilterValue} />
+            <ExpensesFilter selected={filteredYear} onChangeFilter={filterChangeHandler} />
             {props.items.map((expense) => {
                 return <ExpenseItem
                     key={expense.id}
