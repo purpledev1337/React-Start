@@ -1,4 +1,5 @@
-import ExpenseForm from "./components/Expenses/ExpenseForm";
+import React, { useState } from "react";
+
 import Expenses from "./components/Expenses/Expenses";
 import NewExpence from "./components/Expenses/NewExpense";
 
@@ -31,15 +32,18 @@ function App() {
     },
   ];
 
-  function addExpenseHandler(expense) {
-    console.log("In App.js")
-    console.log(expense);
-  }
+  const [expenses, setExpenses] = useState(dummyExpenses);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
+  };
 
   return (
     <div>
         <NewExpence onAddExpense={addExpenseHandler} />
-        <Expenses items={dummyExpenses} />
+        <Expenses items={expenses} />
     </div>
   );
 }
