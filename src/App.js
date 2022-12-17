@@ -35,6 +35,11 @@ function App() {
   const [expenses, setExpenses] = useState(dummyExpenses);
 
   const addExpenseHandler = (expense) => {
+    // checking if the expense object is empty
+    if (expense.title === '' || expense.amount === '' || isNaN(expense.date.getFullYear())) {
+      return;
+    }
+
     setExpenses((prevExpenses) => {
       // array concatenation with spread operator
       return [expense, ...prevExpenses];
