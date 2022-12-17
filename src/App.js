@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import Expenses from "./components/Expenses/Expenses";
-import NewExpence from "./components/Expenses/NewExpense";
+import NewExpence from "./components/NewExpense/NewExpense";
 
 function App() {
 
@@ -37,6 +37,7 @@ function App() {
   const addExpenseHandler = (expense) => {
     // checking if the expense object is empty
     if (expense.title === '' || expense.amount === '' || isNaN(expense.date.getDate()) || isNaN(expense.date.getMonth()) || isNaN(expense.date.getFullYear())) {
+      console.log('Incorrect input data!')
       return;
     }
 
