@@ -36,7 +36,7 @@ function App() {
 
   const addExpenseHandler = (expense) => {
     // checking if the expense object is empty
-    if (expense.title === '' || expense.amount === '' || isNaN(expense.date.getFullYear())) {
+    if (expense.title === '' || expense.amount === '' || isNaN(expense.date.getDate()) || isNaN(expense.date.getMonth()) || isNaN(expense.date.getFullYear())) {
       return;
     }
 
