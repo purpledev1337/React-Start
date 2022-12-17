@@ -36,9 +36,15 @@ function App() {
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
+      // array concatenation with spread operator
       return [expense, ...prevExpenses];
     });
   };
+
+  // reordering the expenses array by date
+  expenses.sort((a, b) => {
+    return a.date > b.date ? -1 : 1;
+  });
 
   return (
     <div>
