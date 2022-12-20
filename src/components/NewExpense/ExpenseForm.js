@@ -3,6 +3,11 @@ import React, { useState } from "react";
 import "./ExpenseForm.css";
 
 function ExpenseForm(props) {
+
+  function hideFormHandler() {
+    props.onHideForm();
+  }
+
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -95,7 +100,7 @@ function ExpenseForm(props) {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="button">Cancel</button>
+        <button onClick={hideFormHandler} type="button">Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
