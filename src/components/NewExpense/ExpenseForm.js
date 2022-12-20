@@ -23,7 +23,7 @@ function ExpenseForm(props) {
   }
 
   function dateChangeHandler(event) {
-    
+
     setEnteredDate(event.target.value);
   }
 
@@ -41,6 +41,8 @@ function ExpenseForm(props) {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    props.onHideForm();
+
   }
 
   return (
