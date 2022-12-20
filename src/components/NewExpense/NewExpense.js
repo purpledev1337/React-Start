@@ -5,7 +5,7 @@ import ExpenseForm from "./ExpenseForm";
 
 function NewExpence(props) {
 
-    const [insertNewExpense, setInsertNewExpense] = useState(false);
+    const [isEditing, editingState] = useState(false);
 
     function onSaveExpenseDataHandler(enteredExpenseData) {
         const expenseData = {
@@ -15,31 +15,21 @@ function NewExpence(props) {
         props.onAddExpense(expenseData);
     };
 
-    function insertNewExpenseHandler() {
-        setInsertNewExpense(true);
+    function startEditingHandler() {
+        editingState(true);
     };
 
-    function onHideFormHandler() {
-        setInsertNewExpense(false);
+    function stopEditingHandler() {
+        editingState(false);
     };
 
-    if (insertNewExpense) {
-
-        return (
-            <div className="new-expense">
-                <ExpenseForm onHideForm={onHideFormHandler} onSaveExpenseData={onSaveExpenseDataHandler} />
-            </div>
-        )
-    }
-
-    else {
-
-        return (
-            <div className="new-expense">
-                <button onClick={insertNewExpenseHandler}>Add New Expense</button>
-            </div>
-        )
-    }
+    return (
+        <div className="new-expense">
+            {!isEditing && <button onClick={startEditingHandler}>Add New Expense</button>}
+            {isEditing && <ExpenseForm onHideForm={stopEditingHandler} onSaveExpenseData={onSaveExpenseDataHandler} />}
+        </div>
+    )
+    
 }
 
 export default NewExpence;
