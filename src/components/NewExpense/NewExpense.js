@@ -19,11 +19,15 @@ function NewExpence(props) {
         setInsertNewExpense(true);
     };
 
+    function onHideFormHandler() {
+        setInsertNewExpense(false);
+    };
+
     if (insertNewExpense) {
 
         return (
             <div className="new-expense">
-                <ExpenseForm onSaveExpenseData={onSaveExpenseDataHandler} />
+                <ExpenseForm onHideForm={onHideFormHandler} onSaveExpenseData={onSaveExpenseDataHandler} />
             </div>
         )
     }
